@@ -1,0 +1,5 @@
+require_relative 'bankapi/test_money'
+require_relative 'bankapi/test_downloader'
+require_relative 'bankapi/test_account'
+require_relative 'bankapi/test_account_storage'
+require_relative 'test_bankapi'

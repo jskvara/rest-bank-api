@@ -1,0 +1,46 @@
+Bank API - Jakub Škvára
+***********************
+
+Jedna se o REST API implementaci bankovniho API.
+Aplikace vyuziva ruby framework sinatra pro jenodussi praci s REST rozhranim.
+
+Zavislosti
+==========
+gem install sinatra
+sudo gem install rack-test
+
+Spusteni
+========
+ruby lib/bankapi.rb
+
+http://0.0.0.0:4567/
+
+
+Zadani
+======
+Implementujte bankovní API pro nejmenovanou českou banku. Součástí řešení by mělo být následující:
+- založení účtu
+- zjištění zůstatku účtu
+- převod peněz mezi účty
+- výpis všech transakcí na účtu
+- převod částky do jiné měny
+
+Dále je nezbytné implementovat třídu Money, která bude sloužit pro uchování množství peněz a bude zaručovat přesnost výpočtů (tj. nechceme, aby se ztrácely peníze díky chybě v zaokrouhlení).
+
+Money.new(1000, "USD") == Money.new(1000, "EUR")   #=> false
+Money.new(1000, "USD") != Money.new(1000, "EUR")   #=> true
+Money.new(1000, "USD") + Money.new(500, "USD") == Money.new(1500, "USD")
+Money.new(1000, "USD") - Money.new(200, "USD") == Money.new(800, "USD")
+Aktuální směnné kurzy je možné získat zde: 
+http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt
+
+Výchozí měnou jsou české koruny:
+
+ 150.to_money # => "150.0 CZK"
+ "150.0 CZK".to_money + 50 # => "200 CZK"
+ 
+Částka může být převedena do jiné měny pomocí helper metody:
+
+ Money.new(2000, :CZK).to_usd # => convert to $
+ Money.new(2000, :CZK).to_gbp # => convert to British Pounds
+ 

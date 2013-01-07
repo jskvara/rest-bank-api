@@ -1,0 +1,2 @@
+class BankApiError < StandardError  
+end
