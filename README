@@ -31,16 +31,16 @@ Money.new(1000, "USD") == Money.new(1000, "EUR")   #=> false
 Money.new(1000, "USD") != Money.new(1000, "EUR")   #=> true
 Money.new(1000, "USD") + Money.new(500, "USD") == Money.new(1500, "USD")
 Money.new(1000, "USD") - Money.new(200, "USD") == Money.new(800, "USD")
-Aktuální směnné kurzy je možné získat zde: 
+Aktuální směnné kurzy je možné získat zde:
 http://www.cnb.cz/cs/financni_trhy/devizovy_trh/kurzy_devizoveho_trhu/denni_kurz.txt
 
 Výchozí měnou jsou české koruny:
 
  150.to_money # => "150.0 CZK"
  "150.0 CZK".to_money + 50 # => "200 CZK"
- 
+
 Částka může být převedena do jiné měny pomocí helper metody:
 
  Money.new(2000, :CZK).to_usd # => convert to $
  Money.new(2000, :CZK).to_gbp # => convert to British Pounds
- 
+
